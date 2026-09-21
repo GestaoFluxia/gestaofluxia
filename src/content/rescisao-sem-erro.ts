@@ -287,7 +287,17 @@ export const guiaRescisaoSemErro: Guia = {
         {
           tipo: "p",
           texto:
-            "Guardou o número? Agora é só gerar o TRCT com esses valores e seguir o checklist do capítulo anterior pra fechar o desligamento sem correr risco de multa por atraso.",
+            "Guardou o número? Agora é só gerar o TRCT com esses valores no seu sistema de folha (ou repassar pro seu contador) e seguir o checklist do capítulo anterior pra fechar o desligamento sem correr risco de multa por atraso.",
+        },
+        {
+          tipo: "conclusao",
+          titulo: "Guia concluído — próximo passo",
+          mensagem:
+            "Você já sabe calcular cada verba da rescisão e o total consolidado. Antes de fechar de vez o desligamento, dois próximos passos práticos:",
+          acoes: [
+            { label: "Revisar o checklist de fechamento", capituloId: "documentos-prazos" },
+            { label: "Voltar ao painel de guias", href: "/" },
+          ],
         },
       ],
     },

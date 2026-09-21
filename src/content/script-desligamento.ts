@@ -202,6 +202,16 @@ export const guiaScriptDesligamento: Guia = {
           texto:
             "Aplique sempre em conversa separada da comunicação do desligamento, de preferência com alguém que não seja o gestor direto da pessoa — isso aumenta a honestidade das respostas.",
         },
+        {
+          tipo: "conclusao",
+          titulo: "Guia concluído — próximo passo",
+          mensagem:
+            "Você já tem o roteiro pra conduzir qualquer desligamento com segurança. Antes da próxima conversa difícil, revise o checklist de preparação:",
+          acoes: [
+            { label: "Revisar o checklist antes da conversa", capituloId: "antes-da-conversa" },
+            { label: "Voltar ao painel de guias", href: "/" },
+          ],
+        },
       ],
     },
   ],

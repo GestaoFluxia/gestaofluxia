@@ -176,6 +176,16 @@ export const guiaKitFeriasEHorasExtras: Guia = {
             "Guardar comprovante de pagamento de tudo dentro do prazo legal",
           ],
         },
+        {
+          tipo: "conclusao",
+          titulo: "Guia concluído — próximo passo",
+          mensagem:
+            "Salve este checklist nos favoritos: é ele que você vai reabrir todo fechamento de folha. Se ainda não calculou uma rescisão, o próximo guia natural é este:",
+          acoes: [
+            { label: "Abrir o guia Rescisão Sem Erro", href: "/p/rescisao-sem-erro" },
+            { label: "Voltar ao painel de guias", href: "/" },
+          ],
+        },
       ],
     },
   ],

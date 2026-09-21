@@ -44,8 +44,8 @@ export default async function ProdutoPage({
           Se você comprou o {produto.nomeCurto} e está vendo esta mensagem, fale com o suporte
           informando o e-mail usado na compra.
         </p>
-        <a href="/login" className="mt-2 text-sm text-emerald-400 hover:underline">
-          Voltar pro login
+        <a href="/" className="mt-2 text-sm text-emerald-400 hover:underline">
+          Voltar ao painel
         </a>
       </main>
     );

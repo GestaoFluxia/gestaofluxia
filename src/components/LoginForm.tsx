@@ -35,9 +35,9 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="w-full max-w-sm space-y-4">
-      <div className="space-y-1">
-        <label className="text-sm text-neutral-400" htmlFor="email">
+    <form onSubmit={onSubmit} className="w-full space-y-5">
+      <div className="space-y-1.5">
+        <label className="text-sm font-medium text-neutral-300" htmlFor="email">
           E-mail
         </label>
         <input
@@ -45,14 +45,15 @@ export function LoginForm() {
           type="email"
           required
           autoComplete="email"
+          placeholder="voce@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-neutral-100"
+          className="w-full rounded-xl border border-neutral-700 bg-neutral-950/60 px-4 py-2.5 text-neutral-100 placeholder-neutral-600 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30"
         />
       </div>
 
-      <div className="space-y-1">
-        <label className="text-sm text-neutral-400" htmlFor="senha">
+      <div className="space-y-1.5">
+        <label className="text-sm font-medium text-neutral-300" htmlFor="senha">
           Senha
         </label>
         <input
@@ -60,25 +61,30 @@ export function LoginForm() {
           type="password"
           required
           autoComplete="current-password"
+          placeholder="••••••••"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-          className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-neutral-100"
+          className="w-full rounded-xl border border-neutral-700 bg-neutral-950/60 px-4 py-2.5 text-neutral-100 placeholder-neutral-600 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/30"
         />
       </div>
 
-      {erro && <p className="text-sm text-red-400">{erro}</p>}
+      {erro && (
+        <p className="rounded-lg border border-red-900/50 bg-red-950/30 px-3 py-2 text-sm text-red-400">
+          {erro}
+        </p>
+      )}
 
       <button
         type="submit"
         disabled={carregando}
-        className="w-full rounded-md bg-emerald-600 px-4 py-2 font-medium text-white transition hover:bg-emerald-500 disabled:opacity-60"
+        className="w-full rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 px-4 py-2.5 font-medium text-white shadow-lg shadow-emerald-950/40 transition hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
       >
-        {carregando ? "Entrando..." : "Entrar"}
+        {carregando ? "Entrando..." : "Entrar →"}
       </button>
 
       <p className="text-center text-sm text-neutral-500">
         Comprou e não recebeu o acesso?{" "}
-        <a href="/primeiro-acesso" className="text-emerald-400 hover:underline">
+        <a href="/primeiro-acesso" className="font-medium text-emerald-400 hover:underline">
           Clique aqui
         </a>
       </p>

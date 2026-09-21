@@ -17,10 +17,12 @@ export function ChapterRenderer({
   capitulo,
   checklistState,
   onToggleChecklist,
+  onIrParaCapitulo,
 }: {
   capitulo: Capitulo;
   checklistState: Record<string, Record<string, boolean>>;
   onToggleChecklist: (checklistId: string, indice: number, valor: boolean) => void;
+  onIrParaCapitulo: (capituloId: string) => void;
 }) {
   return (
     <article>
@@ -62,6 +64,40 @@ export function ChapterRenderer({
             const Calculadora = CALCULADORAS[bloco.ferramenta];
             return <Calculadora key={i} />;
           }
+          case "conclusao":
+            return (
+              <div
+                key={i}
+                className="mt-10 rounded-xl border border-emerald-800/40 bg-gradient-to-br from-emerald-950/40 to-neutral-900/40 p-6"
+              >
+                <div className="mb-2 flex items-center gap-2 text-emerald-400">
+                  <span className="text-xl">✓</span>
+                  <h3 className="text-lg font-semibold text-neutral-50">{bloco.titulo}</h3>
+                </div>
+                <p className="mb-5 text-[15px] leading-relaxed text-neutral-300">{bloco.mensagem}</p>
+                <div className="flex flex-wrap gap-3">
+                  {bloco.acoes.map((acao, j) =>
+                    acao.capituloId ? (
+                      <button
+                        key={j}
+                        onClick={() => onIrParaCapitulo(acao.capituloId!)}
+                        className="rounded-lg border border-emerald-700/60 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300 transition hover:bg-emerald-500/20"
+                      >
+                        {acao.label}
+                      </button>
+                    ) : (
+                      <a
+                        key={j}
+                        href={acao.href}
+                        className="rounded-lg border border-emerald-700/60 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300 transition hover:bg-emerald-500/20"
+                      >
+                        {acao.label}
+                      </a>
+                    )
+                  )}
+                </div>
+              </div>
+            );
           default:
             return null;
         }
