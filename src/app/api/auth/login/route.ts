@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { supabaseAdmin } from "@/lib/supabase";
 import { criarSessaoCookie } from "@/lib/auth";
-import { produtoPorCaktoId } from "@/lib/products";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -31,12 +30,5 @@ export async function POST(req: NextRequest) {
 
   await criarSessaoCookie({ membroId: membro.id, email: membro.email });
 
-  const primeiroProduto = (membro.produtos_liberados as string[])
-    .map(produtoPorCaktoId)
-    .find(Boolean);
-
-  return NextResponse.json({
-    ok: true,
-    redirect: primeiroProduto ? `/p/${primeiroProduto.slug}` : "/login",
-  });
+  return NextResponse.json({ ok: true, redirect: "/" });
 }
