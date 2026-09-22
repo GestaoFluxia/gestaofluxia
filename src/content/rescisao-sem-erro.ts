@@ -202,68 +202,30 @@ export const guiaRescisaoSemErro: Guia = {
         },
         {
           tipo: "h3",
-          texto: "Sem justa causa (a empresa demite)",
+          texto: "Como decidir entre demitir e fazer acordo",
+        },
+        {
+          tipo: "p",
+          texto:
+            "O acordo do art. 484-A sai mais barato pra empresa: a multa do FGTS cai de 40% para 20% e o aviso indenizado é pago pela metade. Em média, custa de 30% a 40% menos que uma demissão sem justa causa. Só que ele não é uma escolha livre da empresa — depende de as duas partes realmente quererem encerrar o contrato.",
         },
         {
           tipo: "lista",
           itens: [
-            "Saldo de salário: sim",
-            "Aviso prévio (trabalhado ou indenizado): sim",
-            "Férias vencidas + proporcionais + 1/3: sim",
-            "13º proporcional: sim",
-            "Multa do FGTS: 40%",
-            "Saque do FGTS: liberado",
-            "Seguro-desemprego: elegível (se cumprir os requisitos)",
+            "Faz sentido quando a pessoa já queria sair e a empresa também quer encerrar — os dois ganham algo em relação ao pedido de demissão puro",
+            "Não faz sentido quando é a empresa que quer desligar e o funcionário não quer sair: nesse caso é demissão sem justa causa, e tentar empurrar acordo vira coação",
+            "O funcionário perde o seguro-desemprego no acordo — se ele depende disso, provavelmente vai recusar, e com razão",
+            "Nunca combine um acordo informal em que se registra demissão sem justa causa e a pessoa devolve parte do valor: isso é fraude, atinge empresa e empregado, e é uma das coisas que o art. 484-A veio justamente eliminar",
           ],
         },
         {
           tipo: "h3",
-          texto: "Pedido de demissão (o funcionário sai)",
+          texto: "O detalhe do 13º na justa causa",
         },
         {
-          tipo: "lista",
-          itens: [
-            "Saldo de salário: sim",
-            "Aviso prévio: a pessoa deve cumprir 30 dias ou a empresa pode descontar o equivalente",
-            "Férias vencidas + proporcionais + 1/3: sim",
-            "13º proporcional: sim",
-            "Multa do FGTS: não há",
-            "Saque do FGTS: retido",
-            "Seguro-desemprego: não elegível",
-          ],
-        },
-        {
-          tipo: "h3",
-          texto: "Acordo entre as partes (art. 484-A da CLT)",
-        },
-        {
-          tipo: "lista",
-          itens: [
-            "Saldo de salário: sim",
-            "Aviso prévio: pela metade, se indenizado",
-            "Férias vencidas + proporcionais + 1/3: sim (integrais)",
-            "13º proporcional: sim (integral)",
-            "Multa do FGTS: 20%",
-            "Saque do FGTS: até 80% do saldo",
-            "Seguro-desemprego: não elegível",
-          ],
-        },
-        {
-          tipo: "h3",
-          texto: "Justa causa",
-        },
-        {
-          tipo: "lista",
-          itens: [
-            "Saldo de salário: sim",
-            "Aviso prévio: não há",
-            "Férias vencidas + 1/3: sim, se houver período completo",
-            "Férias proporcionais: não há direito",
-            "13º proporcional: não há direito (posição predominante, ainda que discutida em alguns tribunais)",
-            "Multa do FGTS: não há",
-            "Saque do FGTS: retido",
-            "Seguro-desemprego: não elegível",
-          ],
+          tipo: "p",
+          texto:
+            "Na justa causa o funcionário perde férias proporcionais e, pela posição predominante, também o 13º proporcional — mas esse segundo ponto ainda é discutido em alguns tribunais. Antes de simplesmente zerar a verba, vale confirmar com o jurídico ou o contador qual entendimento a empresa segue.",
         },
         {
           tipo: "p",
