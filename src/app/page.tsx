@@ -86,7 +86,8 @@ export default async function PainelPage() {
                     {guia.jornada.map((etapa, i) => {
                       const indices = etapa.capituloIds.map(indiceDe).filter((n) => n >= 0);
                       const concluida = indices.every((n) => n < capituloAtual);
-                      const emAndamento = !concluida && indices.some((n) => n <= capituloAtual);
+                      const atual = indices.includes(capituloAtual);
+                      const iniciada = !concluida && indices.some((n) => n < capituloAtual);
                       const primeiroCapitulo = etapa.capituloIds[0];
 
                       return (
@@ -94,7 +95,7 @@ export default async function PainelPage() {
                           <Link
                             href={`/p/${produto.slug}?cap=${primeiroCapitulo}`}
                             className={`group flex gap-4 rounded-2xl border p-5 transition ${
-                              emAndamento
+                              atual
                                 ? "border-emerald-700/50 bg-emerald-950/20"
                                 : "border-neutral-800 bg-neutral-900/30 hover:border-neutral-700 hover:bg-neutral-900/60"
                             }`}
@@ -103,7 +104,7 @@ export default async function PainelPage() {
                               className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
                                 concluida
                                   ? "bg-emerald-500 text-neutral-950"
-                                  : emAndamento
+                                  : atual
                                     ? "border-2 border-emerald-500 text-emerald-400"
                                     : "border border-neutral-700 text-neutral-500"
                               }`}
@@ -122,7 +123,7 @@ export default async function PainelPage() {
                                 >
                                   {etapa.fase === "teoria" ? "Entenda" : "Pratique"}
                                 </span>
-                                {emAndamento && (
+                                {atual && (
                                   <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-500">
                                     Você está aqui
                                   </span>
@@ -136,7 +137,8 @@ export default async function PainelPage() {
                                 {etapa.descricao}
                               </p>
                               <span className="mt-2.5 inline-block text-sm font-medium text-emerald-500">
-                                {concluida ? "Revisar" : emAndamento ? "Continuar" : "Começar"} →
+                                {concluida ? "Revisar" : atual || iniciada ? "Continuar" : "Começar"}{" "}
+                                →
                               </span>
                             </div>
                           </Link>
