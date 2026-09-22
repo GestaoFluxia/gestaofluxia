@@ -106,7 +106,30 @@ export const guiaKitFeriasEHorasExtras: Guia = {
         {
           tipo: "p",
           texto:
-            "Toda hora trabalhada além da jornada contratual (normalmente 220 horas/mês, equivalente a 44h semanais) é hora extra e tem adicional mínimo de 50% em dia útil. Em domingos e feriados trabalhados sem folga compensatória, o adicional sobe pra 100%.",
+            "Toda hora trabalhada além da jornada contratual (normalmente 220 horas/mês, equivalente a 44h semanais) é hora extra. A CLT garante o adicional mínimo de 50% em dia útil, e 100% em domingos e feriados trabalhados sem folga compensatória. Esse é o piso — não necessariamente o que você deve pagar.",
+        },
+        {
+          tipo: "h3",
+          texto: "O percentual real vem da convenção coletiva",
+        },
+        {
+          tipo: "p",
+          texto:
+            "A convenção coletiva (CCT) da categoria pode fixar percentuais maiores que o mínimo legal, e isso prevalece sobre a CLT. Pagar 50% quando a CCT manda pagar 80% gera diferença salarial com reflexo em DSR, férias, 13º e FGTS — um passivo que se acumula silenciosamente mês a mês.",
+        },
+        {
+          tipo: "lista",
+          itens: [
+            "50% — piso legal da CLT para dia útil",
+            "60%, 70%, 80% e 90% — percentuais comuns em convenções coletivas de várias categorias",
+            "100% — domingos e feriados pela CLT, e também percentual de CCT em algumas categorias",
+            "120% — aparece em convenções mais favoráveis, normalmente para horas noturnas ou excedentes a um limite diário",
+          ],
+        },
+        {
+          tipo: "p",
+          texto:
+            "Antes de fechar a folha, abra a CCT vigente da categoria e confirme o percentual. A calculadora abaixo aceita todos esses valores — é só selecionar o que a sua convenção determina.",
         },
         {
           tipo: "template",

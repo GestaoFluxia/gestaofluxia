@@ -4,18 +4,17 @@ import { useState } from "react";
 import { calcularRescisao, type EntradaRescisao, type TipoDesligamento } from "@/lib/calculos";
 import { formatarMoeda } from "@/lib/formato";
 import { gerarPdfRescisao } from "@/lib/pdfRescisao";
+import {
+  BotaoExportarPdf,
+  CamposColaborador,
+  classeInput,
+  useColaborador,
+} from "./CamposColaborador";
 
 const hoje = new Date().toISOString().slice(0, 10);
 
-const classeInput =
-  "rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-neutral-100 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/25";
-
 export function RescisaoCalculadora() {
-  const [nome, setNome] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [matricula, setMatricula] = useState("");
-  const [empresa, setEmpresa] = useState("");
-
+  const { colaborador, atualizar } = useColaborador();
   const [salario, setSalario] = useState("3000");
   const [dataAdmissao, setDataAdmissao] = useState("2024-03-01");
   const [dataDesligamento, setDataDesligamento] = useState(hoje);
@@ -50,7 +49,7 @@ export function RescisaoCalculadora() {
     if (!resultado) return;
     setGerandoPdf(true);
     try {
-      await gerarPdfRescisao({ nome, cargo, matricula, empresa }, entrada, resultado);
+      await gerarPdfRescisao(colaborador, entrada, resultado);
     } finally {
       setGerandoPdf(false);
     }
@@ -66,47 +65,7 @@ export function RescisaoCalculadora() {
       </div>
 
       <div className="space-y-6 p-5">
-        <fieldset className="space-y-3">
-          <legend className="mb-2 text-xs font-semibold uppercase tracking-wider text-emerald-500/80">
-            Colaborador
-          </legend>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <label className="flex flex-col gap-1 text-sm text-neutral-300">
-              Nome do colaborador
-              <input
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                placeholder="Ex.: Maria da Silva"
-                className={classeInput}
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm text-neutral-300">
-              Cargo <span className="text-neutral-600">(opcional)</span>
-              <input
-                value={cargo}
-                onChange={(e) => setCargo(e.target.value)}
-                placeholder="Ex.: Auxiliar administrativo"
-                className={classeInput}
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm text-neutral-300">
-              Matrícula ou CPF <span className="text-neutral-600">(opcional)</span>
-              <input
-                value={matricula}
-                onChange={(e) => setMatricula(e.target.value)}
-                className={classeInput}
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm text-neutral-300">
-              Empresa <span className="text-neutral-600">(opcional)</span>
-              <input
-                value={empresa}
-                onChange={(e) => setEmpresa(e.target.value)}
-                className={classeInput}
-              />
-            </label>
-          </div>
-        </fieldset>
+        <CamposColaborador colaborador={colaborador} atualizar={atualizar} />
 
         <fieldset className="space-y-3">
           <legend className="mb-2 text-xs font-semibold uppercase tracking-wider text-emerald-500/80">
@@ -224,21 +183,11 @@ export function RescisaoCalculadora() {
               <span className="text-emerald-400">{formatarMoeda(resultado.total)}</span>
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={exportarPdf}
-                disabled={!nome.trim() || gerandoPdf}
-                className="rounded-lg bg-gradient-to-r from-emerald-600 to-teal-500 px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-emerald-950/40 transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                {gerandoPdf ? "Gerando..." : "⬇ Exportar PDF da simulação"}
-              </button>
-              {!nome.trim() && (
-                <span className="text-xs text-neutral-500">
-                  Informe o nome do colaborador pra liberar a exportação.
-                </span>
-              )}
-            </div>
+            <BotaoExportarPdf
+              onClick={exportarPdf}
+              desabilitado={!colaborador.nome.trim()}
+              gerando={gerandoPdf}
+            />
 
             <p className="mt-4 text-xs text-neutral-500">
               Estimativa educacional baseada no salário informado. A multa do FGTS usa um depósito
