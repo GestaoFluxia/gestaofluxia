@@ -5,6 +5,7 @@ export type Bloco =
   | { tipo: "template"; titulo?: string; texto: string }
   | { tipo: "checklist"; id: string; itens: string[] }
   | { tipo: "calculadora"; ferramenta: "rescisao" | "ferias" | "decimoTerceiro" | "horaExtra" }
+  | { tipo: "comparador" }
   | {
       tipo: "conclusao";
       titulo: string;
@@ -18,8 +19,18 @@ export interface Capitulo {
   blocos: Bloco[];
 }
 
+/** Uma etapa da jornada guiada que aparece no painel depois do login. */
+export interface EtapaJornada {
+  id: string;
+  fase: "teoria" | "pratica";
+  titulo: string;
+  descricao: string;
+  capituloIds: string[];
+}
+
 export interface Guia {
   slug: string;
   titulo: string;
   capitulos: Capitulo[];
+  jornada: EtapaJornada[];
 }

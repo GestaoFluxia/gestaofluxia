@@ -20,12 +20,22 @@ export function mesesProporcionais(dataInicioContagem: Date, dataFim: Date): num
 export interface ResultadoRescisao {
   saldoSalario: number;
   avisoPrevioIndenizado: number;
+  diasAvisoPrevio: number;
   feriasProporcionais: number;
   tercoFerias: number;
+  mesesFerias: number;
   decimoTerceiroProporcional: number;
+  meses13: number;
   fgtsMesesEstimado: number;
   multaFgtsEstimada: number;
+  percentualMultaFgts: number;
   total: number;
+}
+
+/** Lei 12.506/2011: 30 dias + 3 por ano completo de casa, teto de 90. */
+export function diasAvisoPrevio(dataAdmissao: Date, dataDesligamento: Date): number {
+  const anosCompletos = Math.floor(meses30(dataAdmissao, dataDesligamento) / 12);
+  return Math.min(30 + 3 * Math.max(anosCompletos, 0), 90);
 }
 
 export type TipoDesligamento =
@@ -69,7 +79,10 @@ export function calcularRescisao(e: EntradaRescisao): ResultadoRescisao {
   const meses13 = mesesProporcionais(baseContagem13, desligamento);
   const decimoTerceiroProporcional = (e.salario / 12) * meses13;
 
-  const avisoPrevioIndenizado = e.avisoPrevioIndenizado ? e.salario : 0;
+  const dias = diasAvisoPrevio(admissao, desligamento);
+  // No acordo do art. 484-A o aviso indenizado é devido pela metade.
+  const fatorAcordo = e.tipo === "acordo" ? 0.5 : 1;
+  const avisoPrevioIndenizado = e.avisoPrevioIndenizado ? valorDia * dias * fatorAcordo : 0;
 
   const totalMesesTrabalhados = Math.max(1, Math.ceil(meses30(admissao, desligamento)));
   const fgtsMesesEstimado = e.salario * 0.08 * totalMesesTrabalhados;
@@ -88,11 +101,15 @@ export function calcularRescisao(e: EntradaRescisao): ResultadoRescisao {
   return {
     saldoSalario,
     avisoPrevioIndenizado,
+    diasAvisoPrevio: e.avisoPrevioIndenizado ? dias : 0,
     feriasProporcionais,
     tercoFerias,
+    mesesFerias,
     decimoTerceiroProporcional,
+    meses13,
     fgtsMesesEstimado,
     multaFgtsEstimada,
+    percentualMultaFgts: temMulta ? percentualMulta : 0,
     total,
   };
 }

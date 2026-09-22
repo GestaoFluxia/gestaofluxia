@@ -3,6 +3,40 @@ import type { Guia } from "./types";
 export const guiaKitFeriasEHorasExtras: Guia = {
   slug: "kit-ferias-13-horas-extras",
   titulo: "Kit Férias, 13º e Horas Extras",
+  jornada: [
+    {
+      id: "entender-regras",
+      fase: "teoria",
+      titulo: "Entenda as regras de cada verba",
+      descricao:
+        "Período aquisitivo, abono pecuniário, parcelas do 13º e percentuais de hora extra — o que a lei exige em cada caso.",
+      capituloIds: ["ferias", "decimo-terceiro", "hora-extra"],
+    },
+    {
+      id: "banco-horas",
+      fase: "teoria",
+      titulo: "Banco de horas e adicional noturno",
+      descricao:
+        "Quando a compensação vale, qual o prazo pra compensar e como calcular a hora noturna reduzida.",
+      capituloIds: ["banco-de-horas"],
+    },
+    {
+      id: "praticar",
+      fase: "pratica",
+      titulo: "Calcule com as calculadoras do app",
+      descricao:
+        "Três calculadoras (férias, 13º e hora extra) e casos práticos já resolvidos pra conferir o seu resultado.",
+      capituloIds: ["casos-praticos"],
+    },
+    {
+      id: "rotina-mensal",
+      fase: "pratica",
+      titulo: "Monte sua rotina mensal de conferência",
+      descricao:
+        "Checklist que você reabre todo fechamento de folha pra pegar erro antes que ele vire passivo.",
+      capituloIds: ["checklist-mensal"],
+    },
+  ],
   capitulos: [
     {
       id: "ferias",

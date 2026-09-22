@@ -7,10 +7,13 @@ import { GuiaApp } from "@/components/GuiaApp";
 
 export default async function ProdutoPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ produto: string }>;
+  searchParams: Promise<{ cap?: string }>;
 }) {
   const { produto: slug } = await params;
+  const { cap } = await searchParams;
 
   // Sessão SEMPRE validada no servidor — nunca confiar em um redirect client-side.
   const sessao = await lerSessao();
@@ -55,12 +58,15 @@ export default async function ProdutoPage({
     | { capituloAtual?: number; checklist?: Record<string, Record<string, boolean>> }
     | undefined;
 
+  // Entrada pela jornada do painel: ?cap=<id do capítulo> abre direto naquela etapa.
+  const indiceSolicitado = cap ? guia.capitulos.findIndex((c) => c.id === cap) : -1;
+
   return (
     <GuiaApp
       produtoSlug={slug}
       guia={guia}
       progressoInicial={{
-        capituloAtual: progressoSalvo?.capituloAtual ?? 0,
+        capituloAtual: indiceSolicitado >= 0 ? indiceSolicitado : (progressoSalvo?.capituloAtual ?? 0),
         checklist: progressoSalvo?.checklist ?? {},
       }}
     />

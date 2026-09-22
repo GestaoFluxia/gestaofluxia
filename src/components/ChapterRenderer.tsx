@@ -1,6 +1,7 @@
 import type { Capitulo } from "@/content/types";
 import { BlocoCopiavel } from "./CopyButton";
 import { Checklist } from "./Checklist";
+import { ComparadorTipos } from "./ComparadorTipos";
 import { RescisaoCalculadora } from "./calculadoras/RescisaoCalculadora";
 import { FeriasCalculadora } from "./calculadoras/FeriasCalculadora";
 import { DecimoTerceiroCalculadora } from "./calculadoras/DecimoTerceiroCalculadora";
@@ -64,6 +65,8 @@ export function ChapterRenderer({
             const Calculadora = CALCULADORAS[bloco.ferramenta];
             return <Calculadora key={i} />;
           }
+          case "comparador":
+            return <ComparadorTipos key={i} />;
           case "conclusao":
             return (
               <div

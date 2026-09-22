@@ -3,6 +3,40 @@ import type { Guia } from "./types";
 export const guiaScriptDesligamento: Guia = {
   slug: "script-desligamento",
   titulo: "Script de Conversa de Desligamento",
+  jornada: [
+    {
+      id: "preparar",
+      fase: "teoria",
+      titulo: "Prepare a conversa antes de chamar",
+      descricao:
+        "O que precisa estar pronto: cálculo fechado, local, horário, documentos e quem participa da reunião.",
+      capituloIds: ["antes-da-conversa"],
+    },
+    {
+      id: "o-que-falar",
+      fase: "teoria",
+      titulo: "Saiba o que dizer (e o que nunca dizer)",
+      descricao:
+        "Roteiro de abertura por tipo de desligamento e a lista de frases que viram prova em processo trabalhista.",
+      capituloIds: ["abrindo-a-conversa", "frases-risco"],
+    },
+    {
+      id: "conduzir",
+      fase: "pratica",
+      titulo: "Conduza a conversa de verdade",
+      descricao:
+        "Respostas prontas pra choro, raiva e tentativa de negociação, e como encerrar com prazos claros.",
+      capituloIds: ["reacoes-emocionais", "encerrando"],
+    },
+    {
+      id: "aprender",
+      fase: "pratica",
+      titulo: "Transforme a saída em aprendizado",
+      descricao:
+        "Roteiro de entrevista de desligamento pra descobrir o que a empresa precisa corrigir.",
+      capituloIds: ["roteiro-entrevista"],
+    },
+  ],
   capitulos: [
     {
       id: "antes-da-conversa",

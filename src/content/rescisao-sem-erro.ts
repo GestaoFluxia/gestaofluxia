@@ -3,6 +3,40 @@ import type { Guia } from "./types";
 export const guiaRescisaoSemErro: Guia = {
   slug: "rescisao-sem-erro",
   titulo: "Rescisão Sem Erro",
+  jornada: [
+    {
+      id: "entender-tipos",
+      fase: "teoria",
+      titulo: "Entenda os tipos de rescisão",
+      descricao:
+        "As 4 formas de encerrar um contrato, em que situação cada uma se aplica e o que muda nos direitos. Com comparador interativo.",
+      capituloIds: ["visao-geral", "por-tipo"],
+    },
+    {
+      id: "dominar-verbas",
+      fase: "teoria",
+      titulo: "Domine cada verba, uma por uma",
+      descricao:
+        "Saldo de salário, aviso prévio proporcional, férias, 13º e multa do FGTS — com a fórmula exata de cada um.",
+      capituloIds: ["saldo-e-aviso", "ferias", "decimo-terceiro", "fgts-multa"],
+    },
+    {
+      id: "simular",
+      fase: "pratica",
+      titulo: "Simule um caso real e exporte o PDF",
+      descricao:
+        "Informe o colaborador, o salário e as datas. O app calcula todas as verbas e gera um PDF pronto pra anexar ao processo.",
+      capituloIds: ["casos-praticos"],
+    },
+    {
+      id: "fechar",
+      fase: "pratica",
+      titulo: "Feche o desligamento sem risco",
+      descricao:
+        "Checklist de documentos, prazo legal de pagamento e o que precisa estar assinado antes de encerrar.",
+      capituloIds: ["documentos-prazos"],
+    },
+  ],
   capitulos: [
     {
       id: "visao-geral",
@@ -161,7 +195,10 @@ export const guiaRescisaoSemErro: Guia = {
         {
           tipo: "p",
           texto:
-            "Aqui está o comparativo direto — para saber rápido o que calcular em cada situação, sem precisar reler os capítulos anteriores.",
+            "Aqui está o comparativo direto — para saber rápido o que calcular em cada situação, sem precisar reler os capítulos anteriores. Use o comparador abaixo pra alternar entre os tipos e ver, de um lado, em que situação cada um se aplica e, do outro, exatamente o que o colaborador recebe.",
+        },
+        {
+          tipo: "comparador",
         },
         {
           tipo: "h3",
